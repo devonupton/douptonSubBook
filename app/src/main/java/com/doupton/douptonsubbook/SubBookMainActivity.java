@@ -55,7 +55,9 @@ public class SubBookMainActivity extends AppCompatActivity {
         TextView totalTextView = this.findViewById(R.id.subTotalTextView);
         totalTextView.setText(NumberFormat.getCurrencyInstance().format(count));
     }
-
+    // TODO: Fix total bar
+    // TODO: Fix row currency
+// TODO Implement this
     private void itemClicked(){
 
     }
