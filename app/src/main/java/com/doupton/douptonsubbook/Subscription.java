@@ -1,3 +1,12 @@
+/*
+ * Subscription
+ *
+ * Version 1.0
+ *
+ * January 4, 2018
+ *
+ * Copyright (c) 2018.
+ */
 package com.doupton.douptonsubbook;
 
 import android.support.annotation.NonNull;
@@ -6,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Currency;
 import java.util.Date;
-// TODO: Need javadoc for each file too!
+
 /**
  * A monthly subscription.
  */

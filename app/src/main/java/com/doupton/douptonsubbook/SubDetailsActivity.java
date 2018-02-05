@@ -1,8 +1,17 @@
+/*
+ * SubDetailsActivity
+ *
+ * Version 1.0
+ *
+ * January 4, 2018
+ *
+ * Copyright (c) 2018.
+ */
 package com.doupton.douptonsubbook;
 
-import android.app.Application;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -32,7 +42,6 @@ public class SubDetailsActivity extends AppCompatActivity {
 
         canceled = false;
         initializeDatePicker();
-        // TODO: Test if save file works
         this.manager = new SubscriptionManager(this);
 
         Intent intent = getIntent();
@@ -50,6 +59,10 @@ public class SubDetailsActivity extends AppCompatActivity {
             updateDate();
         }
         else{
+            if (MyApplication.subList == null){
+                MyApplication.subList = manager.loadFromFile();
+            }
+            // Get the indexed subscription
             this.current = MyApplication.subList.get(index);
 
             // Set name
@@ -118,31 +131,47 @@ public class SubDetailsActivity extends AppCompatActivity {
 
         // Attempt to save the current data
         EditText nameEditText = findViewById(R.id.nameEditText);
-        String name = nameEditText.getText().toString();
 
-        if (name.length() > 0){
-            EditText chargeEditText = findViewById(R.id.chargeEditText);
-            EditText commentEditText = findViewById(R.id.commentEditText);
+        // If name is too short, consider this canceled
+        if (nameEditText.length() == 0){
+            Toast cancelToast = Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT);
+            cancelToast.show();
 
-            String comment = commentEditText.getText().toString();
-            String chargeString = chargeEditText.getText().toString();
-            if (chargeString.length() == 0){
-                chargeString = "0";
-            }
-            BigDecimal charge = new BigDecimal(chargeString);
-
-
-            if (current == null){
-                current = new Subscription(name, this.startDate, charge, comment);
-                MyApplication.subList.add(current);
-            }
-            else{
-                current.setName(name);
-                current.setStartDate(this.startDate);
-                current.setMonthlyCharge(charge);
-                current.setComment(comment);
-            }
+        } else {
+            populateSubscription();
             manager.saveToFile(MyApplication.subList);
+
+            Toast saveToast = Toast.makeText(this, "Saved", Toast.LENGTH_SHORT);
+            saveToast.show();
+        }
+    }
+
+    /**
+     * Populate the subscription object given the UI data
+     */
+    private void populateSubscription() {
+        EditText nameEditText = findViewById(R.id.nameEditText);
+        EditText chargeEditText = findViewById(R.id.chargeEditText);
+        EditText commentEditText = findViewById(R.id.commentEditText);
+
+        String name = nameEditText.getText().toString();
+        String comment = commentEditText.getText().toString();
+        String chargeString = chargeEditText.getText().toString();
+        if (chargeString.length() == 0){
+            chargeString = "0";
+        }
+        BigDecimal charge = new BigDecimal(chargeString);
+
+
+        if (current == null){
+            current = new Subscription(name, this.startDate, charge, comment);
+            MyApplication.subList.add(current);
+        }
+        else{
+            current.setName(name);
+            current.setStartDate(this.startDate);
+            current.setMonthlyCharge(charge);
+            current.setComment(comment);
         }
     }
 
@@ -159,10 +188,16 @@ public class SubDetailsActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.deleteButton){
             if (this.current != null){
                 MyApplication.subList.remove(current);
+                Toast deleteToast = Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT);
+                deleteToast.show();
             }
+            else{
+                Toast cancelToast = Toast.makeText(this,"Canceled", Toast.LENGTH_SHORT);
+                cancelToast.show();
+            }
+            // Save and navigate back to parent activity
             manager.saveToFile(MyApplication.subList);
-
-            // TODO:  Nav back!!!
+            NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -1,3 +1,12 @@
+/*
+ * SubscriptionArrayAdapter
+ *
+ * Version 1.0
+ *
+ * January 4, 2018
+ *
+ * Copyright (c) 2018.
+ */
 package com.doupton.douptonsubbook;
 
 import android.content.Context;
@@ -14,19 +23,33 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * Created by devon on 03/02/18.
+ * A custom array adapter for Subscription ListView
  */
-// Code is modified from https://stackoverflow.com/questions/15832335
 public class SubscriptionArrayAdapter extends ArrayAdapter<Subscription> {
+
+    // Code is modified from https://stackoverflow.com/questions/15832335
 
     private LayoutInflater inflater = null;
 
+    /**
+     * Construct the array adapter
+     * @param context context
+     * @param resource resource id
+     * @param objects list of subscriptions
+     */
     public SubscriptionArrayAdapter(@NonNull Context context, int resource,
                                     @NonNull List<Subscription> objects) {
         super(context, resource, objects);
         this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    /**
+     * Get the view for each subscription.
+     * @param position position in array
+     * @param convertView original view
+     * @param parent parent view
+     * @return row view for the subscription
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

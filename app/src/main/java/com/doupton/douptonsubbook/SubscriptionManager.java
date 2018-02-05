@@ -1,7 +1,15 @@
+/*
+ * SubscriptionManager
+ *
+ * Version 1.0
+ *
+ * January 4, 2018
+ *
+ * Copyright (c) 2018.
+ */
 package com.doupton.douptonsubbook;
 
 import android.content.Context;
-import android.text.style.SubscriptSpan;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -17,17 +25,28 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * A manager for saving and loading Subscriptions
+ */
 public class SubscriptionManager {
     private static final String FILENAME = "subscriptions.sav";
 
     private Context context;
 
+    /**
+     * Construct a subscription manager
+     * @param context context for saving and loading
+     */
     public SubscriptionManager(Context context){
         this.context = context;
     }
 
-    // Code modified from lonelytwitter lab
+    /**
+     * Load the subscriptions
+     * @return list of subscriptions
+     */
     public ArrayList<Subscription> loadFromFile(){
+        // Code modified from lonelytwitter lab
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -41,8 +60,12 @@ public class SubscriptionManager {
         }
     }
 
-    // Code modified from lonelytwitter lab
+    /**
+     * Save the subscription list to memory
+     * @param subList subscription list
+     */
     public void saveToFile(ArrayList<Subscription> subList){
+        // Code modified from lonelytwitter lab
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
 
@@ -58,5 +81,4 @@ public class SubscriptionManager {
             throw new RuntimeException();
         }
     }
-
 }

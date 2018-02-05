@@ -1,21 +1,26 @@
+/*
+ * MyApplication
+ *
+ * Version 1.0
+ *
+ * January 4, 2018
+ *
+ * Copyright (c) 2018.
+ */
 package com.doupton.douptonsubbook;
 
 import android.app.Application;
-import android.content.Context;
 
 import java.util.ArrayList;
 
 /**
- * Created by devon on 05/02/18.
+ * Derives application to keep track of the subscription list
  */
 
 public class MyApplication extends Application {
 
-    // Track the list of Subscriptions here
+    /**
+     * The list of subscriptions currently loaded
+     */
     public static ArrayList<Subscription> subList;
-
-    public Context getContext(){
-        return getContext();
-    }
-
 }
