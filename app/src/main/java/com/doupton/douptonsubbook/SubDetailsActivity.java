@@ -186,6 +186,8 @@ public class SubDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.deleteButton){
+            this.canceled = true;
+
             if (this.current != null){
                 MyApplication.subList.remove(current);
                 Toast deleteToast = Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT);
