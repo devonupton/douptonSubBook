@@ -29,6 +29,7 @@ import java.util.ArrayList;
  * A manager for saving and loading Subscriptions
  */
 public class SubscriptionManager {
+
     private static final String FILENAME = "subscriptions.sav";
 
     private Context context;
