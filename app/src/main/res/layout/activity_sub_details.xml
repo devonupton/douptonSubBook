@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.doupton.douptonsubbook.SubDetailsActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/name_label_hint"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:textColorHint="@color/validationHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name" />
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLength="30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentTextView"
+        tools:text="comment" />
+
+    <EditText
+        android:id="@+id/dateEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:longClickable="false"
+        android:focusable="false"
+        android:ems="10"
+        android:inputType="none"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/space"
+        app:layout_constraintStart_toEndOf="@+id/dateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        tools:text="2018-01-01" />
+
+    <EditText
+        android:id="@+id/chargeEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="@string/cost_label_hint"
+        android:inputType="numberDecimal"
+        android:maxLength="6"
+        android:textColorHint="@color/validationHint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/chargeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chargeTextView"
+        tools:text="500" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:labelFor="@+id/nameEditText"
+        android:text="@string/name_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nameEditText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:labelFor="@+id/dateEditText"
+        android:text="@string/date_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dateEditText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/chargeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:labelFor="@+id/chargeEditText"
+        android:text="@string/cost_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dateEditText"
+        app:layout_constraintStart_toEndOf="@+id/space" />
+
+    <TextView
+        android:id="@+id/commentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:labelFor="@+id/commentEditText"
+        android:text="@string/comment_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+</android.support.constraint.ConstraintLayout>

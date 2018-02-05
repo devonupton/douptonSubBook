@@ -1,7 +1,5 @@
 package com.doupton.douptonsubbook;
 
-// TODO Used for load/saving
-
 import android.content.Context;
 import android.text.style.SubscriptSpan;
 
@@ -28,7 +26,7 @@ public class SubscriptionManager {
         this.context = context;
     }
 
-    // TODO: SOurce code from labs
+    // Code modified from lonelytwitter lab
     public ArrayList<Subscription> loadFromFile(){
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
@@ -42,6 +40,8 @@ public class SubscriptionManager {
             return new ArrayList<>();
         }
     }
+
+    // Code modified from lonelytwitter lab
     public void saveToFile(ArrayList<Subscription> subList){
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
@@ -51,7 +51,7 @@ public class SubscriptionManager {
             Gson gson = new Gson();
             gson.toJson(subList, out);
             out.flush();
-            // TODO: Better error handling here
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException();
         } catch (IOException e) {

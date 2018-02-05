@@ -3,6 +3,7 @@
     package="com.doupton.douptonsubbook">
 
     <application
+        android:name="com.doupton.douptonsubbook.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,6 +16,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".SubDetailsActivity"
+            android:parentActivityName=".SubBookMainActivity"
+            android:label="Subscription Details">
         </activity>
     </application>
 

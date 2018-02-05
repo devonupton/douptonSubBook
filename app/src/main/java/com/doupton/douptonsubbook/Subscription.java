@@ -1,19 +1,22 @@
 package com.doupton.douptonsubbook;
 
+import android.support.annotation.NonNull;
+
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Currency;
 import java.util.Date;
 // TODO: Need javadoc for each file too!
 /**
  * A monthly subscription.
  */
-
 public class Subscription {
+
     private static final int MAX_NAME = 20;
     private static final int MAX_COMMENT = 30;
 
     private String name;
-    private Date startDate;
+    private Calendar startDate;
     private BigDecimal monthlyCharge;
     private String comment;
 
@@ -23,7 +26,7 @@ public class Subscription {
      * @param startDate subscription start date
      * @param monthlyCharge subscription monthly charge
      */
-    public Subscription(String name, Date startDate, BigDecimal monthlyCharge){
+    public Subscription(String name, @NonNull Calendar startDate, BigDecimal monthlyCharge){
         setName(name);
         setStartDate(startDate);
         setMonthlyCharge(monthlyCharge);
@@ -36,7 +39,8 @@ public class Subscription {
      * @param monthlyCharge subscription monthly charge
      * @param comment subscription comment (optional, <= {@value MAX_COMMENT} characters)
      */
-    public Subscription(String name, Date startDate, BigDecimal monthlyCharge, String comment){
+    public Subscription(String name, @NonNull Calendar startDate,
+                        BigDecimal monthlyCharge, String comment){
         this(name, startDate, monthlyCharge);
         setComment(comment);
     }
@@ -68,7 +72,7 @@ public class Subscription {
      * Get the start date for this subscription.
      * @return start date
      */
-    public Date getStartDate(){
+    public Calendar getStartDate(){
         return this.startDate;
     }
 
@@ -76,7 +80,7 @@ public class Subscription {
      * Set the start date for this subscription.
      * @param date start date
      */
-    public void setStartDate(Date date){
+    public void setStartDate(@NonNull Calendar date){
         startDate = date;
     }
 
@@ -117,7 +121,7 @@ public class Subscription {
     public void setComment(String comment) throws IllegalArgumentException {
         if (comment.length() > MAX_COMMENT) {
             throw new IllegalArgumentException("Comment exceeds " + MAX_COMMENT + " characters.");
-        } else{
+        } else {
             this.comment = comment;
         }
     }

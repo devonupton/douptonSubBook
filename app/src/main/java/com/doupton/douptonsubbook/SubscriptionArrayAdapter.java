@@ -12,11 +12,11 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
-// TODO: Source https://stackoverflow.com/questions/15832335
+
 /**
  * Created by devon on 03/02/18.
  */
-
+// Code is modified from https://stackoverflow.com/questions/15832335
 public class SubscriptionArrayAdapter extends ArrayAdapter<Subscription> {
 
     private LayoutInflater inflater = null;
@@ -40,9 +40,9 @@ public class SubscriptionArrayAdapter extends ArrayAdapter<Subscription> {
         nameTextView.setText(sub.getName());
 
         TextView dateTextView = row.findViewById(R.id.dateTextView);
-        // TODO: Put this code elsewhere??
+
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        dateTextView.setText(format1.format(sub.getStartDate()));
+        dateTextView.setText(format1.format(sub.getStartDate().getTime()));
 
         TextView chargeTextView = row.findViewById(R.id.chargeTextView);
         chargeTextView.setText(NumberFormat.getCurrencyInstance().format(sub.getMonthlyCharge()));

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">douptonSubBook</string>
     <string name="total">Total Charge:</string>
+    <string name="name_label">Subscription Name:</string>
+    <string name="date_label">Start Date:</string>
+    <string name="cost_label">Cost ($):</string>
+    <string name="comment_label">Comment (optional):</string>
+    <string name="name_label_hint">(name is required)</string>
+    <string name="cost_label_hint">0.00</string>
+
+    <string name="create_button_label">Create</string>
+    <string name="delete_button_label">Delete</string>
 </resources>

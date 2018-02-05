@@ -43,4 +43,3 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="$00.00" />
 </android.support.constraint.ConstraintLayout>
-<!-- TODO: Source https://stackoverflow.com/questions/15832335 -->
